@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            padding-top: 80px; /* Add padding for fixed navbar */
+        }
+
+        .navbar {
+            background-color: white;
+            color: orange;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 125px;
+            padding-right: 20px;
+        }
+
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: orange;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 125px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-link {
+            color: rgb(147, 128, 94);
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: normal;
+        }
+
+        .navbar-link:hover {
+            background-color: #f4f4f4;
+            color: rgb(255, 166, 0);
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff9900;
+            font-size: 2.5em;
+            margin: 20px 0;
+            padding: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        table {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #1a0dab;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff6600;
+        }
+
+        .row-number {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-logo"><img src="KUKA_Logo.jpg" alt="Your Logo"></a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="main.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="Theory/Theory.html" class="navbar-link">Theory</a></li>
+                <li class="navbar-item"><a href="PRETEST/main.html" class="navbar-link">Pretest</a></li>
+                <li class="navbar-item"><a href="Procedure.html" class="navbar-link">Procedure</a></li>
+                <li class="navbar-item"><a href="Simulation/simulation.html" class="navbar-link">Simulation</a></li>
+                <li class="navbar-item"><a href="POSTEST/main.html" class="navbar-link">Posttest</a></li>
+                <li class="navbar-item"><a href="reference_main.html" class="navbar-link">References</a></li>
+                <li class="navbar-item"><a href="contribution_main.html" class="navbar-link">Contributors</a></li>
+                <li class="navbar-item"><a href="Feedback.html" class="navbar-link">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <h1>References</h1>
+    </header>
+    
+    <table>
+        <caption><strong>Books</strong></caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Publication Year</th>
+                <th>Publisher</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-number">1</td>
+                <td>Inverse Kinematics for Robotic Manipulators</td>
+                <td>2020</td>
+                <td>Springer</td>
+                <td><a href="https://www.springer.com/gp/book/9783030379815" target="_blank">Read the Book</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">2</td>
+                <td>Particle Swarm Optimization</td>
+                <td>2018</td>
+                <td>Wiley</td>
+                <td><a href="https://www.wiley.com/en-us/Particle+Swarm+Optimization-p-9781118029567" target="_blank">Read the Book</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">3</td>
+                <td>Robotics: Modelling, Planning and Control</td>
+                <td>2019</td>
+                <td>Springer</td>
+                <td><a href="https://www.springer.com/gp/book/9783319996945" target="_blank">Read the Book</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">4</td>
+                <td>Control of KUKA Robots</td>
+                <td>2021</td>
+                <td>CRC Press</td>
+                <td><a href="https://www.crcpress.com/Control-of-KUKA-Robots/Choset/p/book/9781138559465" target="_blank">Read the Book</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">5</td>
+                <td>7-DOF Robotic Manipulator Control</td>
+                <td>2022</td>
+                <td>Elsevier</td>
+                <td><a href="https://www.elsevier.com/books/7-dof-robotic-manipulator-control/9780323854123" target="_blank">Read the Book</a></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table>
+        <caption><strong>Research Papers</strong></caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Publication Year</th>
+                <th>Publisher</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-number">1</td>
+                <td>Dr.Navaneeth Haridasan sir's slides</td>
+                <td>2024</td>
+                <td>CEN Repository</td>
+                <td><a href="https://amritavishwavidyapeetham-my.sharepoint.com/personal/h_navaneeth_cb_amrita_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fh%5Fnavaneeth%5Fcb%5Famrita%5Fedu%2FDocuments%2FCourses%2F22AIE214%5FI2AIR%5F23%2D24%2F22AIE214%5FResource%5Fshare&ga=1" target="_blank">Read the Slides</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">2</td>
+                <td>Time Optimal Trajectory Planning Algorithm for Robotic Manipulator</td>
+                <td>2021</td>
+                <td>IET Research</td>
+                <td><a href="https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/cje.2021.00.373" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">3</td>
+                <td>Kinematically Adapted Sampling-Based Motion Planning Algorithm for Robotic Manipulator</td>
+                <td>2022</td>
+                <td>Springer</td>
+                <td><a href="https://link.springer.com/chapter/10.1007/978-3-031-08140-8_49" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">4</td>
+                <td>A Review of Artificial Intelligence Algorithms used for Robotic Manipulator</td>
+                <td>2020</td>
+                <td>Academia</td>
+                <td><a href="https://www.academia.edu/44187442/A_Review_of_Artificial_Intelligence_Algorithms_used_for_Robotic_Manipulator" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">5</td>
+                <td>Intelligent control of robotic manipulators: a comprehensive review</td>
+                <td>2022</td>
+                <td>Springer</td>
+                <td><a href="https://link.springer.com/article/10.1007/s41324-022-00500-2" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">6</td>
+                <td>Path planning of robotic manipulators using genetic algorithm: a review</td>
+                <td>2019</td>
+                <td>Elsevier</td>
+                <td><a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417419300312" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">7</td>
+                <td>Trajectory Optimization for Robotic Manipulators: An Overview</td>
+                <td>2021</td>
+                <td>IEEE</td>
+                <td><a href="https://ieeexplore.ieee.org/document/9311234" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">8</td>
+                <td>Robotic Manipulator Control Using Machine Learning: A Survey</td>
+                <td>2023</td>
+                <td>Elsevier</td>
+                <td><a href="https://www.sciencedirect.com/science/article/pii/S0957417423001072" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">9</td>
+                <td>Adaptive Control of Robotic Manipulators: A Review</td>
+                <td>2020</td>
+                <td>IEEE</td>
+                <td><a href="https://ieeexplore.ieee.org/document/9011345" target="_blank">Read the Paper</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">10</td>
+                <td>Robotic Manipulator Dynamics and Control: An Overview</td>
+                <td>2021</td>
+                <td>MDPI</td>
+                <td><a href="https://www.mdpi.com/2076-3417/11/6/2743" target="_blank">Read the Paper</a></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table>
+        <caption><strong>NPTEL Lectures</strong></caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Instructor</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-number">1</td>
+                <td>Inverse Kinematics</td>
+                <td>Prof. Ashitava Ghosal</td>
+                <td><a href="https://nptel.ac.in/courses/112104189" target="_blank">Watch the Lecture</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">2</td>
+                <td>Particle Swarm Optimization</td>
+                <td>Prof. Deepak Khemani</td>
+                <td><a href="https://nptel.ac.in/courses/106106126" target="_blank">Watch the Lecture</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">3</td>
+                <td>KUKA Robotics</td>
+                <td>Prof. D.K. Subramanian</td>
+                <td><a href="https://nptel.ac.in/courses/112106138" target="_blank">Watch the Lecture</a></td>
+            </tr>
+            <tr>
+                <td class="row-number">4</td>
+                <td>7-DOF Robotic Manipulators</td>
+                <td>Prof. C.S. George Lee</td>
+                <td><a href="https://nptel.ac.in/courses/112107290" target="_blank">Watch the Lecture</a></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+</body>
+</html>

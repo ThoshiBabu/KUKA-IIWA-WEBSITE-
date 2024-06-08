@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to right, #f4f4f4, #ffffff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            padding-top: 80px; /* Add padding for fixed navbar */
+        }
+
+        .navbar {
+            background-color: white;
+            color: orange;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.5s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 125px;
+            padding-right: 20px;
+        }
+
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: orange;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .navbar-logo img {
+            width: 125px;
+            height: auto;
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+
+        .navbar-logo:hover img {
+            transform: rotate(360deg);
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-link {
+            color: rgb(147, 128, 94);
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            font-weight: normal;
+        }
+
+        .navbar-link:hover {
+            background-color: #f4f4f4;
+            color: rgb(255, 166, 0);
+            transform: scale(1.1);
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff9900;
+            font-size: 2.5em;
+            margin: 20px 0;
+            padding: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            animation: fadeIn 1s ease-in-out;
+            transform: scale(0.95);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content:hover {
+            transform: scale(1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        p, ol {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        p:hover, ol:hover {
+            transform: translateX(10px);
+            color: #333;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            background: #ff9900;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .step-text {
+            flex: 1;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            border-bottom: 1px dotted black;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the tooltip */
+            left: 50%;
+            margin-left: -100px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* Arrow pointing down */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-logo"><img src="KUKA_Logo.jpg" alt="Your Logo"></a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="main.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="Theory/Theory.html" class="navbar-link">Theory</a></li>
+                <li class="navbar-item"><a href="PRETEST/main.html" class="navbar-link">Pretest</a></li>
+                <li class="navbar-item"><a href="Procedure.html" class="navbar-link">Procedure</a></li>
+                <li class="navbar-item"><a href="Simulation/simulation.html" class="navbar-link">Simulation</a></li>
+                <li class="navbar-item"><a href="POSTEST/main.html" class="navbar-link">Posttest</a></li>
+                <li class="navbar-item"><a href="reference_main.html" class="navbar-link">References</a></li>
+                <li class="navbar-item"><a href="contribution_main.html" class="navbar-link">Contributors</a></li>
+                <li class="navbar-item"><a href="Feedback.html" class="navbar-link">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <h1>Procedure</h1>
+    </header>
+    
+    <div class="content">
+        <p>The procedure to operate the KUKA robotic arm is as follows:</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">Search for KUKA LBR iiwa 14 R820 STL files on the internet. Download the STL files for all the robot's links and joints.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Open Blender.Import the STL files (File > Import > STL).Arrange and join the links properly to form the complete robot model.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Ensure each link is parented to its respective joint for proper movement. Structure the robot so that transformations on the joints affect the subsequent links correctly.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text">Once the model is fully assembled and functional, export it as a glTF file (File > Export > glTF 2.0).Ensure to export both .gltf and .bin files.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text">To set up the Three.js environment, initialize the scene and camera, add appropriate lighting, and load the robot model.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text">Now to apply Forward kinematics for the model.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text">Create functions to update the robot's joint angles based on user input and calculate the transformation matrix..</div>
+            </div>
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text">Define joint transformations to apply rotations based on input angles.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text">Add event listeners to sliders to capture input angles and update the robot configuration.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text">Compute and display the transformation matrix and end effector position based on the joint angles.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text">SCreate an animation loop to render the scene continuously.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text">Implementing Particle Swarm Optimization (PSO) for Inverse Kinematics.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text">Define a psoInverseKinematics function that initializes particles with random joint angles and velocities, creates a loop to update particle positions and velocities based on their fitness, local best positions, and global best position.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text">Defines a fitness function  that computes the distance between the end-effector and the target position. Update the robot's joint angles to the best found solution and update the end-effector position.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text">Use the best found solution from the PSO to update the robot's joint angles.Update the end-effector position based on the new joint angles.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

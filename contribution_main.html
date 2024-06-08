@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 DOF - KUKA IIWA LBR MANIPULATOR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f9;
+            padding-top: 80px; /* Add padding for fixed navbar */
+        }
+        h1, h2 {
+            color: #ff9933;
+        }
+        .navbar {
+            background-color: white;
+            color: orange;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 125px;
+            padding-right: 20px;
+        }
+    
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: orange;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+    
+        .navbar-logo img {
+            width: 125px;
+            height: auto;
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+    
+        .navbar-logo:hover img {
+            transform: rotate(360deg);
+        }
+    
+        .navbar-menu {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+        }
+    
+        .navbar-item {
+            position: relative;
+        }
+    
+        .navbar-link {
+            color: rgb(147, 128, 94);
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: normal;
+        }
+
+        .navbar-link:hover {
+            background-color: #f4f4f4;
+            color: rgb(255, 166, 0);
+        }
+
+        .navbar-link.active {
+            color: #ff9933;
+            font-weight: bold;
+        }
+    
+        .header {
+            position: relative;
+            height: 400px;
+            background: url('image.jpg') no-repeat center center/cover; /* Optional background */
+            z-index: -1;
+        }
+    
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(52, 41, 41, 0.5);
+            z-index: 1;
+        }
+    
+        .header-content {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+            z-index: 2;
+        }
+        .header-content h1 {
+            font-size: 3em;
+            margin: 0;
+            color: rgb(255, 116, 30);
+        }
+    
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            animation: fadeIn 2s ease-in;
+            z-index: 1;
+            position: relative;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .content section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .content section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+        }
+        .subject-matter-expert table, .contributors-list table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        td a:hover {
+            color: #004c99;
+        }
+        .contributor-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .contributor-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-basis: calc(50% - 20px); /* Change this line */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .contributor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+        }
+        .contributor-card h3 {
+            margin-top: 0;
+        }
+        .contributor-card p {
+            margin: 0.5em 0;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            z-index: 1;
+        }
+        .social-icons a {
+            color: #fff;
+            padding: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #ff9933;
+        }
+        a {
+            color: #1a0dab;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff6600;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                width: 95%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            th, td {
+                padding: 8px;
+            }
+            .contributor-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-logo"><img src="KUKA_Logo.jpg" alt="Your Logo"></a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="main.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="Theory/Theory.html" class="navbar-link">Theory</a></li>
+                <li class="navbar-item"><a href="PRETEST//main.html" class="navbar-link">Pretest</a></li>
+                <li class="navbar-item"><a href="Procedure.html" class="navbar-link">Procedure</a></li>
+                <li class="navbar-item"><a href="Simulation/simulation.html" class="navbar-link">Simulation</a></li>
+                <li class="navbar-item"><a href="POSTEST/main.html" class="navbar-link">Posttest</a></li>
+                <li class="navbar-item"><a href="reference_main.html" class="navbar-link">References</a></li>
+                <li class="navbar-item"><a href="Contribution/main.html" class="navbar-link active">Contributors</a></li>
+                <li class="navbar-item"><a href="Feedback.html" class="navbar-link">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="header-content">
+            <h1>7 DOF - KUKA IIWA LBR</h1>
+        </div>
+    </div>
+    
+    <div class="content">
+        <section class="subject-matter-expert" id="subject-matter-expert">
+            <h2>Subject Matter Expert</h2>
+            <table>
+                <tr>
+                    <td><strong>Name of Guide</strong></td>
+                    <td>Dr. Navaneeth Haridasan</td>
+                </tr>
+                <tr>
+                    <td><strong>Institute</strong></td>
+                    <td>Amrita Vishwa Vidyapeetham</td>
+                </tr>
+                <tr>
+                    <td><strong>Email ID </strong></td>
+                    <td><a href="mailto:h_navaneeth@cb.amrita.edu">h_navaneeth@cb.amrita.edu</a></td>
+                </tr>
+                <tr>
+                    <td><strong>LinkedIn </strong></td>
+                    <td><a href="https://linkedin.com/in/hnavaneeth/?originalSubdomain=in">LinkedIn</a></td>
+                </tr>
+                
+                <tr>
+                    <td><strong>Department</strong></td>
+                    <td>Centre for Computational Engineering and Networking</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="contributors-list" id="contributors">
+            <h2>Contributors List</h2>
+            <div class="contributor-cards">
+                <div class="contributor-card">
+                    <h3>Deepan S</h3>
+                    <p><strong>Roll No:</strong> CB.EN.U4AIE22117</p>
+                    <p><strong>Designation:</strong> Student</p>
+                    <p><strong>Department:</strong> CEN</p>
+                    <p><strong>Institute:</strong> Amrita Vishwa Vidyapeetham</p>
+                </div>
+                <div class="contributor-card">
+                    <h3>Kishore S</h3>
+                    <p><strong>Roll No:</strong> CB.EN.U4AIE22128</p>
+                    <p><strong>Designation:</strong> Student</p>
+                    <p><strong>Department:</strong> CEN</p>
+                    <p><strong>Institute:</strong> Amrita Vishwa Vidyapeetham</p>
+                </div>
+                <div class="contributor-card">
+                    <h3>Thoshi Babu</h3>
+                    <p><strong>Roll No:</strong> CB.EN.U4AIE22129</p>
+                    <p><strong>Designation:</strong> Student</p>
+                    <p><strong>Department:</strong> CEN</p>
+                    <p><strong>Institute:</strong> Amrita Vishwa Vidyapeetham</p>
+                </div>
+                <div class="contributor-card">
+                    <h3>Mithin Dev</h3>
+                    <p><strong>Roll No:</strong> CB.EN.U4AIE22131</p>
+                    <p><strong>Designation:</strong> Student</p>
+                    <p><strong>Department:</strong> CEN</p>
+                    <p><strong>Institute:</strong> Amrita Vishwa Vidyapeetham</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Amrita Vishwa Vidyapeetham. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.navbar-link');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    links.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Feedback page for user satisfaction survey">
+    <meta name="keywords" content="Feedback, User Satisfaction, Survey">
+    <meta name="author" content="Your Name">
+    <title>Feedback</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        .navbar {
+            background-color: white;
+            color: orange;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: orange;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 125px;
+            height: auto;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-logo img:hover {
+            transform: rotate(360deg);
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-link {
+            color: rgb(147, 128, 94);
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: normal;
+        }
+
+        .navbar-link:hover {
+            background-color: #f4f4f4;
+            color: rgb(255, 166, 0);
+        }
+
+        .navbar-link.active {
+            color: #cc7a00;
+            font-weight: bold;
+        }
+
+        .form-box {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-box:hover {
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .textup {
+            text-align: center;
+            color: #ff9900;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .emoji-rating-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .emoji-rating-label {
+            display: flex;
+            align-items: center;
+            font-size: 17px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .emoji-rating {
+            display: flex;
+            gap: 15px;
+        }
+
+        .emoji-rating input[type="radio"] {
+            display: none;
+        }
+
+        .emoji-rating label {
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s;
+            user-select: none;
+        }
+
+        .emoji-rating label:hover,
+        .emoji-rating label:focus {
+            transform: scale(1.4);
+            color: #ff9800;
+        }
+
+        .emoji-rating input[type="radio"]:checked + label {
+            transform: scale(1.4);
+            color: #ff5722;
+        }
+
+        .emoji-rating label::after {
+            content: attr(title);
+            display: block;
+            font-size: 14px;
+            text-align: center;
+            color: #888;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .emoji-rating input[type="radio"]:checked + label::after {
+            color: #ff5722;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #ff9900;
+            outline: none;
+        }
+
+        input.error,
+        textarea.error {
+            border-color: #e74c3c;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #ff9900;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #cc7a00;
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .navbar-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-box {
+                width: 90%;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-logo"><img src="KUKA_Logo.jpg" alt="Your Logo"></a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="main.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="Theory/Theory.html" class="navbar-link">Theory</a></li>
+                <li class="navbar-item"><a href="PRETEST/main.html" class="navbar-link">Pretest</a></li>
+                <li class="navbar-item"><a href="Procedure.html" class="navbar-link">Procedure</a></li>
+                <li class="navbar-item"><a href="Simulation/simulation.html" class="navbar-link">Simulation</a></li>
+                <li class="navbar-item"><a href="POSTEST/main.html" class="navbar-link">Posttest</a></li>
+                <li class="navbar-item"><a href="reference_main.html" class="navbar-link">References</a></li>
+                <li class="navbar-item"><a href="contribution_main.html" class="navbar-link">Contributors</a></li>
+                <li class="navbar-item"><a href="Feedback.html" class="navbar-link active">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="form-box">
+        <div class="textup">
+            <i class="fa fa-solid fa-clock"></i>
+            It only takes two minutes!!
+        </div>
+        <form id="feedback-form">
+            <div>
+                <label for="uname">
+                    <i class="fa fa-solid fa-user"></i>
+                    Name
+                </label>
+                <input type="text" id="uname" name="uname" placeholder="Enter your name" required>
+                <div id="uname-error" class="error-message"></div>
+            </div>
+
+            <div>
+                <label for="email">
+                    <i class="fa fa-solid fa-envelope"></i>
+                    Email Address
+                </label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <div id="email-error" class="error-message"></div>
+            </div>
+
+            <div>
+                <label for="phone">
+                    <i class="fa-solid fa-phone"></i>
+                    Phone No
+                </label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                <div id="phone-error" class="error-message"></div>
+            </div>
+
+            <div class="emoji-rating-section">
+                <label class="emoji-rating-label">
+                    <i class="fa-solid fa-face-smile"></i>
+                    Are you satisfied with our service?
+                </label>
+                <div class="emoji-rating">
+                    <input type="radio" id="very-satisfied" name="satisfy" value="very-satisfied" checked>
+                    <label for="very-satisfied" title="Very Satisfied">😊</label>
+
+                    <input type="radio" id="satisfied" name="satisfy" value="satisfied">
+                    <label for="satisfied" title="Satisfied">🙂</label>
+
+                    <input type="radio" id="neutral" name="satisfy" value="neutral">
+                    <label for="neutral" title="Neutral">😐</label>
+
+                    <input type="radio" id="unsatisfied" name="satisfy" value="unsatisfied">
+                    <label for="unsatisfied" title="Unsatisfied">🙁</label>
+
+                    <input type="radio" id="very-unsatisfied" name="satisfy" value="very-unsatisfied">
+                    <label for="very-unsatisfied" title="Very Unsatisfied">😠</label>
+                </div>
+            </div>
+
+            <div>
+                <label for="msg">
+                    <i class="fa-solid fa-comments" style="margin-right: 3px;"></i>
+                    Write your Suggestions:
+                </label>
+                <textarea id="msg" name="msg" rows="4" cols="10" placeholder="Your suggestions..." required></textarea>
+                <div id="msg-error" class="error-message"></div>
+            </div>
+
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <p>Thank you for your feedback!</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let isValid = true;
+
+            const uname = document.getElementById('uname');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const msg = document.getElementById('msg');
+
+            const unameError = document.getElementById('uname-error');
+            const emailError = document.getElementById('email-error');
+            const phoneError = document.getElementById('phone-error');
+            const msgError = document.getElementById('msg-error');
+
+            if (uname.value.trim() === '') {
+                isValid = false;
+                uname.classList.add('error');
+                unameError.textContent = 'Name is required.';
+            } else {
+                uname.classList.remove('error');
+                unameError.textContent = '';
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                isValid = false;
+                email.classList.add('error');
+                emailError.textContent = 'Invalid email address.';
+            } else {
+                email.classList.remove('error');
+                emailError.textContent = '';
+            }
+
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone.value)) {
+                isValid = false;
+                phone.classList.add('error');
+                phoneError.textContent = 'Invalid phone number. Must be 10 digits.';
+            } else {
+                phone.classList.remove('error');
+                phoneError.textContent = '';
+            }
+
+            if (msg.value.trim() === '') {
+                isValid = false;
+                msg.classList.add('error');
+                msgError.textContent = 'Message is required.';
+            } else {
+                msg.classList.remove('error');
+                msgError.textContent = '';
+            }
+
+            if (isValid) {
+                showModal();
+                this.reset();
+            }
+        });
+
+        function showModal() {
+            document.getElementById('success-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+
+</html>
