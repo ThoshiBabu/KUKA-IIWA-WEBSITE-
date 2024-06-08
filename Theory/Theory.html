@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="Theory.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-logo"><img src="KUKA_Logo.jpg" alt="Your Logo"></a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="../main.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="Theory.html" class="navbar-link">Theory</a></li>
+                <li class="navbar-item"><a href="../PRETEST/main.html" class="navbar-link">Pretest</a></li>
+                <li class="navbar-item"><a href="../Procedure.html" class="navbar-link">Procedure</a></li>
+                <li class="navbar-item"><a href="../Simulation/simulation.html" class="navbar-link">Simulation</a></li>
+                <li class="navbar-item"><a href="../POSTEST/main.html" class="navbar-link">Posttest</a></li>
+                <li class="navbar-item"><a href="../reference_main.html" class="navbar-link">References</a></li>
+                <li class="navbar-item"><a href="../contribution_main.html" class="navbar-link">Contributors</a></li>
+                <li class="navbar-item"><a href="../Feedback.html" class="navbar-link">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="parallax">
+        <h1>WELCOME TO THE ROBOTICS THEORY</h1>
+    </div>
+    
+    <header class="fade-in">
+        <h1>Theory</h1>
+    </header>
+    
+    <section class="fade-in">
+        <h2>Introduction</h2>
+        <p>This section provides an introduction to the fundamental concepts of robotics, specifically focusing on the kinematics and control of robotic manipulators. Understanding these concepts is essential for designing and operating robotic systems efficiently.</p>
+        
+        <h3>General Terminology in Robotics (KUKA IIWA 14):</h3><br>
+        
+        <h4>Workspace:</h4>
+        <p>The reachable workspace of the KUKA IIWA 14 robot's end-effector is the manifold of reachable frames, which determines the range of motion and tasks it can perform.</p>
+    
+        <h4>Accuracy:</h4>
+        <p>Accuracy on the KUKA IIWA 14 refers to its ability to position its end-effector precisely at a desired target point within the work volume, influenced by factors such as sensor technology and control algorithms.</p>
+    
+        <h4>Repeatability:</h4>
+        <p>Repeatability on the KUKA IIWA 14 is a measure of its ability to consistently return to a specific position when performing repetitive tasks under similar conditions. It is crucial for maintaining precision and reliability in industrial applications.</p>
+    
+        <h4>Safety:</h4>
+        <p>Ensuring safety is paramount in the design and operation of the KUKA IIWA 14. Its collaborative features and advanced control systems aim to minimize the risk of human-robot collisions and ensure a safe working environment for human-robot interaction.</p>
+    </section>
+    
+    <section class="fade-in">
+        <h2>Forward Kinematics</h2>
+        <p>Forward kinematics involves calculating the position and orientation of the end-effector of a robotic manipulator based on the given joint parameters. This is achieved by using the known link lengths and joint angles to determine the end-effector's pose in the workspace.</p>
+        <div class="content-container">
+                <img src="another_scheme.jpg" alt="Diagram">
+        </div>
+        <h2>DH - Table :</h2>
+        <div class ="dh_table">
+            <img src ="dh_Table.jpg" alt ="dh_table">
+        </div>
+
+        <p style="line-height: 1.5; font-size: 16px; margin-top: 20px;">
+            θ<sub>i</sub>: Joint angle for the i-th joint, which is variable.<br>
+            d<sub>i</sub>: Offset along the previous z-axis to the common normal.<br>
+            a<sub>i</sub>: Length of the common normal (distance between z<sub>i-1</sub> and z<sub>i</sub> along x<sub>i</sub>).<br>
+            α<sub>i</sub>: Angle between the previous z-axis and the current z-axis around the common normal (along x<sub>i</sub>).
+        </p>
+
+        <h2> Schematic Diagram :</h2>
+
+        <div class = "digram_scheme">
+            <img src = "digrametic_scheme.jpg">
+        </div>
+        <br>
+
+        
+
+        <h3 > D-bs = 340mm </h3>
+        <h3>  D-se = 400mm </h3>
+        <h3> D-ew = 400mm</h3>
+        <h3> D-wf = 126mm</h3>
+
+        <br>
+
+        <h2> Transformation Matrix:</h2>
+
+        <h3 style="font-size: 24px; color: white;">Formula:</h3> <br>
+
+
+        <div class = "formula">
+            <img src = "formula.jpg">
+        </div><br>
+
+        <h3 style = "font-size: 24px; color: white;">Calculations :</h3> <br>
+
+
+       
+
+        <div class = "trans_container_1">
+            <div class = "image_con_1">
+                <img src = "Trans_1.jpg" alt =" t1">
+                <img src="Trans_2.jpg" alt = "t2" >
+            </div>
+        </div>
+
+        <div class = "transe_container_2">
+            <div class = "image_con_2">
+                <img src = "Trans_3.jpg" alt =" t1">
+                <img src="Trans_4.jpg" alt = "t2" >
+   
+            </div>
+            <br>
+        </div>
+
+        <div class = "transe_container_3">
+
+            <div class = "image_con_3">
+                <img src = "Trans_5.jpg" alt =" t1">
+                <img src="Trans_6.jpg" alt = "t2" >
+            </div>
+            <br>
+        </div>
+
+        <div class = "last_transform">
+            <img src="Trans_7.jpg">
+            
+        </div>
+        <br>
+
+        <h2> The Final Transformation Matrix :</h2>
+
+        <div class = "final_trans">
+            <img src="FInal .jpg" >
+        </div>
+
+
+    </section>
+    
+    
+    <section class="fade-in">
+        <h2>Inverse Kinematics</h2>
+        <p>Inverse kinematics is the process of determining the joint parameters that provide a desired position and orientation of the robotic manipulator's end-effector. This involves solving complex mathematical equations and is crucial for tasks that require precise positioning.</p>
+    </section>
+    
+    
+    <section class="fade-in">
+        <h2>Advanced Algorithm Description :</h2>
+        <p>Advanced algorithms for robotic manipulators include various techniques for optimizing motion planning, trajectory planning, and adaptive control. 
+           These algorithms enhance the performance and efficiency of robotic systems, enabling them to handle more complex tasks and operate in dynamic environments.</p>
+
+        <h2>Particle Swarm Algorithm :</h2>
+        <p>PSO is a population-based stochastic optimization technique inspired by the social behavior of birds flocking or fish schooling. In PSO, a population of potential solutions (particles) 
+            is initialized randomly, and these particles move through the search space, adjusting their positions based on their own best-known position and the global best-known position of the entire swarm. This movement is guided by mathematical formulas derived from the behavior of social groups.</p>
+
+        <div class = "pso">
+            <img src="pso_flow.jpg">
+        </div>
+        <br>
+
+        <p> PSO can be applied to solve various optimization problems, such as inverse kinematics (IK). Inverse kinematics is the process of determining the joint configurations of a robot to achieve a desired end-effector position. PSO can be used to search for optimal 
+            joint configurations that minimize the difference between the desired end-effector position (target position) and the actual end-effector position. By using PSO, the robot can efficiently explore the joint space and find solutions that satisfy the given constraintsand objectives.
+            PSO is used to solve the inverse kinematics problem for a robotic manipulator (represented by the imported robot model). PSO is compared with another method, Jacobian-based IK, to evaluate its performance in terms of accuracy and computation time. </p>
+            <br>
+
+            <h2> Analysis :</h2>
+            <p>When to Prefer PSO for Inverse Kinematics:</p>
+
+            <p>
+                1. <strong>Highly Nonlinear Systems:</strong><br>
+                <strong>PSO:</strong> Effective for highly nonlinear systems where the relationship between joint angles and end-effector position is complex.<br>
+                <strong>Jacobian:</strong> May struggle with convergence if the system is highly nonlinear and if the Jacobian matrix is difficult to compute or becomes singular.
+            </p>
+
+            <p>
+                2. <strong>Discontinuous or Non-Differentiable Objective Functions:</strong><br>
+                <strong>PSO:</strong> Does not require the objective function to be continuous or differentiable, making it suitable for problems where the objective function has discontinuities or is not differentiable.<br>
+                <strong>Jacobian:</strong> Requires the objective function to be smooth and differentiable to compute gradients.
+            </p>
+
+            <p>
+                3. <strong>Global Optimization:</strong><br>
+                <strong>PSO:</strong> Capable of global search and can avoid getting trapped in local minima, making it suitable for finding global solutions in complex search spaces.<br>
+                <strong>Jacobian:</strong> Primarily a local search method, which can get stuck in local minima and may not find the global optimum.
+            </p>
+
+            <p>
+                4. <strong>Complex Constraints:</strong><br>
+                <strong>PSO:</strong> Handles complex constraints naturally, as it evaluates the fitness of each particle considering all constraints.<br>
+                <strong>Jacobian:</strong> Handling complex constraints may require additional modifications or constraints handling techniques.
+            </p>
+
+            <p>
+                5. <strong>Initialization Sensitivity:</strong><br>
+                <strong>PSO:</strong> Less sensitive to initial conditions due to its population-based nature, which explores multiple regions of the search space simultaneously.<br>
+                <strong>Jacobian:</strong> Highly sensitive to initial conditions, and poor initialization can lead to slow convergence or failure to converge.
+            </p>
+
+                    
+
+    </section>
+    
+    <section class="faq-section fade-in">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> Explain the significance of Degrees of Freedom (DOF) in a 7DOF manipulator.</div>
+            <div class="faq-answer">The Degrees of Freedom (DOF) in a 7DOF manipulator refer to the number of independent movements the manipulator can make. With 7 DOF, the manipulator has more flexibility and can perform complex tasks that require precise positioning and orientation in 3D space.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> What are the common manipulator types in 7DOF systems?</div>
+            <div class="faq-answer">Common types of manipulators in 7DOF systems include articulated robots, which use a series of rotary joints, and anthropomorphic robots, which are designed to mimic the human arm. These configurations allow for versatile movement and control.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> Why is the Jacobian matrix important in the analysis of a 7DOF manipulator?</div>
+            <div class="faq-answer">The Jacobian matrix is crucial for analyzing a 7DOF manipulator as it relates the joint velocities to the end-effector velocities. It helps in understanding the manipulator's kinematics and is essential for motion control and stability analysis.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> What role do joint angles play in the control of a 7DOF manipulator?</div>
+            <div class="faq-answer">Joint angles determine the position and orientation of the end-effector in a 7DOF manipulator. Controlling these angles precisely is vital for achieving the desired end-effector position and performing tasks accurately.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> Describe the concept of workspace for a 7DOF manipulator.</div>
+            <div class="faq-answer">The workspace of a 7DOF manipulator is the volume of space within which the end-effector can move and operate. It is determined by the manipulator's geometry and joint limitations, and it defines the range of tasks the manipulator can perform.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> How does inverse kinematics differ from forward kinematics in the context of a 7DOF manipulator?</div>
+            <div class="faq-answer">Inverse kinematics involves calculating the joint parameters required for a desired end-effector position, while forward kinematics involves determining the end-effector position from given joint parameters. Inverse kinematics is more complex and crucial for precise control.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> What is the Denavit-Hartenberg (D-H) parameterization and how is it used in modeling a 7DOF manipulator?</div>
+            <div class="faq-answer">The Denavit-Hartenberg (D-H) parameterization is a standardized method for representing the kinematic chains of robotic manipulators. It simplifies the modeling process by defining a set of parameters that describe the relative positions and orientations of adjacent links.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-chevron-right"></i> How do singularities affect the operation of a 7DOF manipulator?</div>
+            <div class="faq-answer">Singularities in a 7DOF manipulator occur when the Jacobian matrix loses rank, leading to a loss of one or more degrees of freedom. This can result in uncontrollable or unpredictable behavior, making certain positions and orientations unattainable or requiring infinite joint velocities.</div>
+        </div>
+    </section>
+    
+    
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('.navbar').classList.toggle('dark-mode');
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('h1, h2, p, a').forEach(element => {
+                element.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('.faq').forEach(faq => {
+                faq.classList.toggle('dark-mode');
+            });
+            // Save user preference
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        }
+
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.navbar').classList.add('dark-mode');
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.add('dark-mode');
+                });
+                document.querySelectorAll('h1, h2, p, a').forEach(element => {
+                    element.classList.add('dark-mode');
+                });
+                document.querySelectorAll('.faq').forEach(faq => {
+                    faq.classList.add('dark-mode');
+                });
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+      document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const faq = question.parentElement;
+        faq.classList.toggle('open');
+        const answer = question.nextElementSibling;
+        if (faq.classList.contains('open')) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+            answer.style.maxHeight = '0';
+        }
+    });
+});
+
+
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.scrollY > 200) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

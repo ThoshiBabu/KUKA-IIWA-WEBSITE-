@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            padding-top: 80px; /* Add padding for fixed navbar */
+        }
+
+        .navbar {
+            background-color: white;
+            color: orange;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 125px;
+            padding-right: 20px;
+        }
+
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: orange;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 125px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-link {
+            color: rgb(147, 128, 94);
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: normal;
+        }
+
+        .navbar-link:hover {
+            background-color: #f4f4f4;
+            color: rgb(255, 166, 0);
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff9900;
+            font-size: 3em;
+            margin: 20px 0;
+            padding: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            max-width: 800px;
+            margin: 20px auto;
+            color: #333;
+            line-height: 1.6;
+            font-size: 1.2em;
+        }
+
+        table {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ff9900;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #1a0dab;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff6600;
+        }
+
+        .row-number {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+        }
+
+        .screenshot {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .screenshot img {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot img:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot h3 {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .screenshot a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 0px 0px;
+            
+            color: #ff9900;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .screenshot a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-logo"><img src="../KUKA_Logo.jpg" alt="KUKA Logo"></a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="../main.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="../Theory/Theory.html" class="navbar-link">Theory</a></li>
+                <li class="navbar-item"><a href="../PRETEST/main.html" class="navbar-link">Pretest</a></li>
+                <li class="navbar-item"><a href="../Procedure.html" class="navbar-link">Procedure</a></li>
+                <li class="navbar-item"><a href="../Simulation/simulation.html" class="navbar-link active">Simulation</a></li>
+                <li class="navbar-item"><a href="../POSTEST/main.html" class="navbar-link">Posttest</a></li>
+                <li class="navbar-item"><a href="../reference_main.html" class="navbar-link">References</a></li>
+                <li class="navbar-item"><a href="../contribution_main.html" class="navbar-link">Contributors</a></li>
+                <li class="navbar-item"><a href="../Feedback.html" class="navbar-link">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <h1>Simulator</h1>
+        <p>This program simulates a 7 link 3D KUKA IIWA LBR Robot using the javascript program. The model and its movement of different links are encoded in javascript language. With this program, the forward kinematics of KUKA IIWA LBR is explained, and simultaneously movements of different joints at a time can be seen. Axis coordinates and orientation are setup according to the theory explained earlier. This program does not allow for the specification of angular speed or acceleration of the arms. Click on the screenshot given below to start the simulation.</p>
+    </header>
+    
+    <table>
+        <caption><strong>Kinematics Panel consists of:</strong></caption>
+        <thead>
+            <tr>
+                <th>ANGLE</th>
+                <th>RANGE</th>
+                <th>DOF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>θ<sub>1</sub> : 170</td>
+                <td>-170 to 170</td>
+                <td>Base Joint</td>
+            </tr>
+            <tr>
+                <td>θ<sub>2</sub> : 120</td>
+                <td>-120 to 120</td>
+                <td>Shoulder Joint</td>
+            </tr>
+            <tr>
+                <td>θ<sub>3</sub> : 170</td>
+                <td>-170 to 170</td>
+                <td>Elbow Joint</td>
+            </tr>
+            <tr>
+                <td>θ<sub>4</sub> : 120</td>
+                <td>-120 to 120</td>
+                <td>Wrist 1 Joint</td>
+            </tr>
+            <tr>
+                <td>θ<sub>5</sub> : 170</td>
+                <td>-170 to 170</td>
+                <td>Wrist 2 Joint</td>
+            </tr>
+            <tr>
+                <td>θ<sub>6</sub> : 120</td>
+                <td>-120 to 120</td>
+                <td>Wrist 3 Joint</td>
+            </tr>
+            <tr>
+                <td>θ<sub>7</sub> : 170</td>
+                <td>-170 to 170</td>
+                <td>Tool Joint</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="screenshot">
+        <h3>Click on the screenshot to start the Forward Kinematics simulation</h3>
+        <a href="Forward.html" target="_blank">
+            <img src="Forward.jpg" alt="KUKA IIWA Simulator Screenshot">
+        </a>
+        <h3>Simulator Screen shot</h3>
+        <a href="Forward.html" target="_blank"><h2>Click to open the Forward Kinematics Simulator Tab</h2></a>
+
+        <h3>Click on the screenshot to start the Inverse Kinematics simulation</h3>
+        <a href="Inverse.html" target="_blank">
+            <img src="Inverse.jpg" alt="KUKA IIWA Simulator Screenshot">
+        </a>
+        <h3>Simulator Screen shot</h3>
+        <a href="Inverse.html" target="_blank"><h2>Click to open the Inverse Kinematics Simulator Tab</h2></a>
+        
+    </div>
+</body>
+</html>

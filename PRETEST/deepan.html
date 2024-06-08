@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="deepan-style.css">
+    <title>Deepan- Home</title>
+
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+
+    <!--FontAwesome icons for footer-->
+    <script src="https://kit.fontawesome.com/371ca024d1.js" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleZoomScreen() {
+            document.body.style.zoom = "80%";
+        } 
+     </script>     
+</head>
+<body onload="toggleZoomScreen()">
+    <nav>
+        <div class="nav-left">
+            <h1>Deepan S</h1>
+        </div>
+        <div class="nav-right">
+          <a href="./main.html">Quizo.</a>
+        </div>
+      </nav>
+    <div class="about">
+        <div class="me">
+            <div class="left-me">
+                <img src="deepan-main.png">
+            </div>
+            <div class="right-me">
+                <h1>
+                    Hi, I am Deepan!
+                </h1>
+                <p>Hi, I'm Deepan, an aspiring researcher based in Coimbatore. I'm currently pursuing my Bachelor's degree in <span class="para-highlight">Artificial Intelligence</span> from the Amrita University,Coimbatore and I'm passionate about <span class="para-highlight">using AI to solve complex problems and improve people's lives.</span></p>
+                <p>My dream is to work on projects that have a real-world impact, such as developing intelligent healthcare systems or improving transportation through autonomous vehicles. In my free time, <span class="para-highlight">I enjoy participating in hackathons and attending AI conference</span> to stay up-to-date with the latest developments in the field. I'm also an avid reader and enjoy exploring the city's many bookstores and coffee shops.</p>
+            </div>
+        </div>
+        <div class="wrapper">
+        <div class="container-grid">
+            <div class="skills-hobbies">
+                <h1>
+                    My Skills and Hobbies
+                </h1>
+                <h3 class="para-highlight">Skills</h3>
+                <ul>
+                    <li>Java <i class="fa-brands fa-java"></i></li>
+                    <li>Python<i class="fa-brands fa-python"></i></li>
+                    <li><i class="fa-solid fa-c"></i></li>
+                    <li>Machine Learning <i class="fa-solid fa-diagram-project"></i></li>
+                </ul>
+                
+                <h3 class="para-highlight">Hobbies</h3>
+                <p>
+                    <ul>
+                        <li>Watching TV Shows 📺</li>
+                        <li>Listening to Music 🎧</li>
+                        <li>Reading Books 📖</li>
+                        <li>Scrolling through Instagram reels 😅</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="contact">
+                <form>
+                    <div class="form-container">
+                        <h1>Contact Me</h1>
+                        <div class="form-row">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name" class="name">
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Your email" class="email">
+                        </div>
+                        <br>
+                        <div class="form-row" >
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Your Subject" class="subject">
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Type your message here :)" rows="3" cols="40" class="message"></textarea>
+                        </div>
+                        <br>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+          <ul class="social-icons">
+            <li><a href="https://github.com/"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://twitter.com/i/flow/login?redirect_after_login=%2F%3Flang%3Den-in"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com/deepan.s_/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://in.linkedin.com/?original_referer=https%3A%2F%2Fwww.bing.com%2F"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://open.spotify.com/user/31itx6t6tllchhx5bvtny4dcypdy?si=1bc897bcfaaa4407"><i class="fa fa-spotify"></i></a></li>
+          </ul>
+        </div>
+    </footer>
+</body>
+</html>
